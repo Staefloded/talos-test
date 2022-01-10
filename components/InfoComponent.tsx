@@ -6,7 +6,6 @@ type InfoProps = {
 };
 
 const InfoComponent = ({ info }: InfoProps) => {
-  console.log({ info });
   return (
     <div className="mb-10">
       <h1 className="text-2xl font-semibold">{info?.name} Explained</h1>

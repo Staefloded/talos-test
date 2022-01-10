@@ -6,7 +6,6 @@ type InfoProps = {
 };
 
 const VideoComponent = ({ video }: InfoProps) => {
-  console.log({ video });
   return (
     <>
       {video?.video_id && (
