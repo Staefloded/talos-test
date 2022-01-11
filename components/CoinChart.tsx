@@ -8,25 +8,23 @@ type CoinChartProps = {
   timestamp: Timestamp;
 };
 
+if (typeof Highcharts === "object") {
+  HighchartsExporting(Highcharts);
+}
+
 const CoinChart = ({ timestamp, ...rest }: CoinChartProps) => {
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
 
-  const options = { month: "short", year: "numeric" };
-
-  if (typeof Highcharts === "object") {
-    HighchartsExporting(Highcharts);
-  }
-
   const options: Highcharts.Options = {
     title: {
-      text: "My chart",
+      text: "One Year chart",
     },
     plotOptions: {
       stochastic: {},
     },
     xAxis: {
       categories: timestamp.history_1y.map(({ timestamp }) =>
-        new Date(timestamp).toLocaleDateString("en-US", options)
+        new Date(timestamp).toLocaleDateString("en-US", { month: "short", year: "numeric" })
       ),
     },
     series: [
